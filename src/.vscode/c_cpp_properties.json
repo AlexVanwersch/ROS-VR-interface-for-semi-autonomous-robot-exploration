@@ -1,0 +1,26 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/alex-xrlab/ros_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/alex-xrlab/ros_ws/src/launch_files/include/**",
+        "/home/alex-xrlab/ros_ws/src/python_scripts_unreal/include/**",
+        "/home/alex-xrlab/ros_ws/src/raspicam_node/include/**",
+        "/home/alex-xrlab/ros_ws/src/turtlebot3_simulations/turtlebot3_fake/include/**",
+        "/home/alex-xrlab/ros_ws/src/turtlebot3_simulations/turtlebot3_gazebo/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

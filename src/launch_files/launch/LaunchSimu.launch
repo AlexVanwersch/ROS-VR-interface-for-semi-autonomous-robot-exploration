@@ -1,0 +1,30 @@
+<launch>
+  <!-- Set the map name as a parameter -->
+  <arg name="map_name" default="turtlebot3_house"/>
+
+  <!-- Set the model of the turtlebot as a parameter -->
+  <arg name="robot_model" default="burger"/>
+
+  <!-- Launch Gazebo with the specified map and model -->
+  <include file="$(find turtlebot3_gazebo)/launch/$(arg map_name).launch" >
+    <arg name="model" value="$(arg robot_model)"/>
+  </include>
+
+  <!-- Launch the slam_stack with Gazebo disabled -->
+  <include file="$(find turtlebot_navigation_and_mapping)/launch/slam_stack.launch">
+    <arg name="Gazebo" value="False"/>
+  </include>
+
+  <!-- Publish "It is working" every second -->
+  <node name="publisher" pkg="rostopic" type="rostopic" args="pub /status std_msgs/String 'It is working' -r 1"/>
+
+  <!-- Launch a rosbridge TCP connection to a specified host and port -->
+  <node name="rosbridge" pkg="rosbridge_server" type="rosbridge_tcp">
+    <param name="bson_only_mode" value="True" />
+    <param name="host" value="169.254.226.253" />
+    <param name="port" value="9090" />
+  </node>
+
+  <!-- Run the Python script -->
+  <node name="python_script" pkg="python_scripts_unreal" type="GoalSetting.py"/>
+</launch>
